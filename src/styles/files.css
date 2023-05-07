@@ -1,0 +1,87 @@
+.files {
+    display: flex;
+    flex-direction: column;
+   
+    font-size: small;
+ 
+  }
+  
+  .topics {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .right p{
+    margin-right: 10px;
+  }
+  
+  .right {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+  
+  .download {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .img{
+    width: 13px;
+  }
+  hr{
+    width: 100%;
+  }
+  .availableFiles{
+    display: flex;
+    flex-direction: row;
+  }
+  .type {
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+  }
+  .name{
+    display: flex;
+    flex-direction: column;
+    margin: 8px; 
+  }
+  .name p{
+    margin-bottom: 14px;
+  }
+  .type img {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+  }
+  .date{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+  }
+  .date p{
+    margin-bottom: 15px;
+  }
+  .download{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+  }
+  .download input{
+    margin-bottom: 17px;
+   
+  }
+.first-date{
+    margin-left: 500px;
+}
+.second-date{
+    margin-left: 30px;
+}
