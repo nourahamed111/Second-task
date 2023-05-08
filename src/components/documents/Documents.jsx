@@ -30,8 +30,6 @@ export default function Documents() {
         <button>Download</button>
       </div>
       </div>
-  
-      
     </div>
     <Files/>
     </div>

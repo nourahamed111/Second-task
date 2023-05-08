@@ -1,27 +1,40 @@
 import React from "react";
-import "../../styles/buttons.css";
-export default function Buttons() {
+
+const Button = ({ color, name, hoverColor , icon }) => {
+  const style = {
+    backgroundColor: color,
+    cursor: "pointer",
+    color: "#fff",
+    marginLeft:"20px",
+    padding: "1.5%",
+    display: "inline-flex",
+    justifyContent: "center",
+    borderRadius: "4px",
+    boxShadow: "none",
+    border: "none",
+    transition: "background-color 0.3s ease",
+    width:"85px",
+  };
+
+  const handleMouseEnter = (e) => {
+    e.target.style.backgroundColor = hoverColor;
+  };
+
+  const handleMouseLeave = (e) => {
+    e.target.style.backgroundColor = color;
+  };
+
   return (
-    <>
-      <div className="mainDiv">
-        <div class="dropdown">
-          <button class="dropdown-btn">
-            <img src="https://img.icons8.com/metro/26/1A1A1A/chevron-down.png" />
-            <img src="https://img.icons8.com/ios/50/1A1A1A/crystal.png" />
-            ACME GmbH
-          </button>
-        </div>
-        <div className="options">
-          <button>
-            <img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/FFFFFF/external-setting-user-interface-kmg-design-glyph-kmg-design.png" />
-            Setting
-          </button>
-          <button>
-            <img src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/24/FFFFFF/external-online-account-logout-with-arrow-direction-mark-login-bold-tal-revivo.png" />
-            Logout
-          </button>
-        </div>
-      </div>
-    </>
+    <button
+      style={style}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {icon && <img className="buttonIcon" src={icon} alt="icon" />}
+      {name}
+    </button>
   );
-}
+};
+
+export default Button;
+
