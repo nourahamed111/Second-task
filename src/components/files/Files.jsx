@@ -59,28 +59,30 @@ export default function Files() {
   });
 
   return (
-    <table className="files">
+    <table>
       <thead>
         <tr>
-          <th>Type</th>
+          <th className='typeTh'>Type</th>
           <th className='nameTh'>Name</th>
+          <div className='published-cont'>
           <th className='published' onClick={handleSort}>
             Published
             <img className='img' src={sortIcon} />
           </th>
+          </div>
           <th className='lastDownloadTh'>Last downloaded</th>
           <th className='downloadTh'>Download</th>
         </tr>
+        <tr><th colSpan="5"><hr/></th></tr>
       </thead>
-      <hr />
       <tbody>
         {sortedFiles.map((file) => (
           <tr key={file.name}>
-            <td><img src={file.type} /></td>
-            <td><p className="nametd">{file.name}</p></td>
-            <td><p className="first-date">{file.firstDate.toLocaleDateString()}</p></td>
-            <td><p className="second-date">{file.secondDate.toLocaleDateString()}</p></td>
-            <td><input type='checkbox' /></td>
+            <td className='typeTd' ><img src={file.type} /></td>
+            <td className="nametd">{file.name}</td>
+            <td className="first-date">{file.firstDate.toLocaleDateString()}</td>
+            <td className="second-date">{file.secondDate.toLocaleDateString()}</td>
+            <td className='inputTd' ><input type='checkbox' /></td>
           </tr>
         ))}
       </tbody>

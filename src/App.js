@@ -7,11 +7,12 @@ import HeaderDropdown from "./components/headerDropdown/HeaderDropdown";
 function App() {
   return (
     <div className="App">
+    {/* <div className="container"> */}
       <div className="headerWrapper">
         <div className="dropDown"><HeaderDropdown/></div>
         <div className="headerbuttons">
-          <Buttons color="#373636" name=" Setting" hoverColor="#8D55C8" icon={settingsIcon} />
-          <Buttons color="#373636" name="Logout" hoverColor="#8D55C8" icon={logoutIcon} />
+          <Buttons className="btnSetting" color="#373636" name=" Setting" hoverColor="#8D55C8" icon={settingsIcon} />
+          <Buttons className="btnLogout" color="#373636" name="Logout" hoverColor="#8D55C8" icon={logoutIcon} />
         </div>
       </div>
       <div className="header">
@@ -22,7 +23,8 @@ function App() {
         </p>
       </div>
       <Documents />
-    </div>
+      </div>
+    // </div>
   );
 }
 

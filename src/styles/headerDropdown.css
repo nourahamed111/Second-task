@@ -1,64 +1,72 @@
 .dropdown {
-    margin: 2%;
+    margin: 0.08rem;
   }
   .dropdown button {
+    white-space: nowrap;
+    font-weight: 100;
+    font-size: 0.8rem;
     color: #373636;
     background-color: #fff;
-    margin-right: 5%;
     box-shadow: none;
     border: none;
     border-radius: 5px;
-    padding: 3%;
+    padding: 0.5rem;
     display: inline-flex;
     justify-content: center;
-    width: 150px;
+    width: 40%;
     text-align: center;
   }
   .dropdown button img {
-    margin-right: 8%;
-    width: 15px;
+    margin-right:0.7rem;
+    width: 10%;
     cursor: pointer;
   }
   .dropdown-content {
-    padding: 2.5%;
+    padding: 0.5rem;
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
     position: absolute;
-    top: 43px;
-    left: 35px;
+    top: 11%;
+    left: 3.3%;
     border-radius: 5px;
     border-top-left-radius: 0;
     z-index: 1;
-    width: 59%;
+    width: 40%;
     justify-content: center;
   }
   
   .dropdown-item {
+    font-weight: 100;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     width: 21%;
-    padding: 5px;
+    padding:0.2rem;
     border-radius: 5px;
-    margin: 1%;
+    margin: 0.3rem;
     border-bottom: 1px solid #ccc;
     background-color: #efefef;
   }
-  .dropdown-item:last-child {
-    border-bottom: none;
-  }
+
   .dropdown-item img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 10%;
+    height: 50%;
+    margin-right: 1rem;
   }
   .dropdown-item h6 {
     margin: 0;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 0.6rem;
   }
   .dropdown-item p {
     margin: 0;
-    font-size: 11px;
+    font-size:0.5rem;
   }
-  
+  @media screen and (max-width:  300px) {
+  .dropdown button {
+    width: 135%;
+}
+.dropdown {
+  margin-right: 2rem;
+}
+}

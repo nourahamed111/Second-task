@@ -5,7 +5,9 @@ const Button = ({ color, name, hoverColor , icon }) => {
     backgroundColor: color,
     cursor: "pointer",
     color: "#fff",
-    marginLeft:"20px",
+    marginLeft:"1rem",
+    fontWeight: "100",
+    fontSize:" 0.8rem",
     padding: "1.5%",
     display: "inline-flex",
     justifyContent: "center",
@@ -13,8 +15,10 @@ const Button = ({ color, name, hoverColor , icon }) => {
     boxShadow: "none",
     border: "none",
     transition: "background-color 0.3s ease",
-    width:"85px",
+    width:"42%",
+    marginBottom:"5px",
   };
+
 
   const handleMouseEnter = (e) => {
     e.target.style.backgroundColor = hoverColor;
@@ -26,12 +30,14 @@ const Button = ({ color, name, hoverColor , icon }) => {
 
   return (
     <button
+    className="buttonComp"
       style={style}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {icon && <img className="buttonIcon" src={icon} alt="icon" />}
-      {name}
+      <span className="btnName">{name}</span>
+      
     </button>
   );
 };
