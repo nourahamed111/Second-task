@@ -43,7 +43,7 @@ function Table() {
           <div className="options d-flex justify-content-start">
             <img className="sort-icons" id="list" src={listIcon} />
             <img
-              className={`sort-icons ${pdfView ? "hide" : ""}`}
+              className={`sort-icons hide ${pdfView ? "hide" : ""}`}
               id="pdf"
               src={pdfshowIcon}
               onClick={() => setShowPdf(!showPdf)}

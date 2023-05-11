@@ -358,7 +358,7 @@ th img {
     width: 100%;
   }
   .pdf-preview {
-    padding: 0.2rem;
+    margin: 0.2rem;
     border-radius: 20px;
     background-color: #efefef;
     display: flex;
