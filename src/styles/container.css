@@ -1,0 +1,57 @@
+.main-container {
+  padding: 1.8rem;
+  background-color: #efefef;
+}
+.header-text {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.user-btns {
+  font-family: Montserrat, Medium;
+  background-color: #373636;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 100;
+  font-size: 0.9rem;
+  border-radius: 7px;
+  box-shadow: none;
+  margin-left: 10px;
+  border: none;
+  width: 11%;
+}
+.user-btns:hover {
+  background-color: #8d55c8;
+}
+.user-btns img {
+  margin-right: 0.7rem;
+  width: 15%;
+  cursor: pointer;
+}
+.header-text h1 {
+  font-weight: 200;
+  font-size: 1.5rem;
+}
+.header-text p {
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+@media (max-width:  430px) {
+  .header-text h1 {
+    font-size: 1.2rem;
+}
+.header-text {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}.dropdown-btn {
+  width: 63%;
+}
+.user-btn-name{
+  display: none;
+}
+.user-btns img {
+  margin-right: 0.7rem;
+  width: 100%;
+  cursor: pointer;
+}
+}

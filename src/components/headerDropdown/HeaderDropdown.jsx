@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import '../../styles/headerDropdown.css';
+import React, { useState } from "react";
+import "../../styles/headerDropdown.css";
 import shapeIcon from "../../icons/imaginary_brand.svg";
 
 const HeaderDropdown = () => {
@@ -12,7 +12,11 @@ const HeaderDropdown = () => {
   return (
     <div className="dropdown">
       <button className="dropdown-btn" onClick={handleDropdown}>
-        {isOpen ? <img src="https://img.icons8.com/metro/26/1A1A1A/chevron-up.png" /> : <img src="https://img.icons8.com/metro/26/1A1A1A/chevron-down.png" />}
+        {isOpen ? (
+          <img className="show-dropdown" src="https://img.icons8.com/metro/26/1A1A1A/chevron-up.png" />
+        ) : (
+          <img className="show-dropdown" src="https://img.icons8.com/metro/26/1A1A1A/chevron-down.png" />
+        )}
         <img src={shapeIcon} />
         ACME GmbH
       </button>
@@ -34,7 +38,3 @@ const HeaderDropdown = () => {
 };
 
 export default HeaderDropdown;
-
-
-
-

@@ -1,0 +1,243 @@
+.table-container {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.sort-small {
+  display: none;
+}
+.options {
+  width: 50%;
+}
+.sort-icons {
+  width: 6%;
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+}
+.sort-icons:hover {
+  background-color: #efefef;
+  border-radius: 3px;
+}
+.last-icon {
+  margin-right: 1rem;
+}
+
+.search {
+  position: relative;
+  margin-right: 1rem;
+}
+.search input {
+  font-weight: 100;
+  font-size: 0.9rem;
+  background-color: #efefef;
+  border: none;
+  border-radius: 6px;
+  padding-left: 1rem;
+}
+
+.search input::placeholder {
+  color: #999292;
+}
+.search img {
+  width: 5%;
+  cursor: pointer;
+  position: absolute;
+  left: 86%;
+  top: 36%;
+}
+.sort-btn {
+  display: inline-block;
+  border: 1px solid #8d55c8;
+  border-radius: 6px;
+  color: #8d55c8;
+  background-color: #fff;
+  width: 100%;
+  font-weight: 100;
+  font-size: 0.9rem;
+  margin-left: 0.2rem;
+  white-space: nowrap;
+}
+
+.sort-btn img {
+  margin-left: 0.4rem;
+  margin-right: 0.6rem;
+  width: 5%;
+}
+.download button {
+  border: 3px#8D55C8;
+  border-radius: 10px;
+  background-color: #8d55c8;
+  color: aliceblue;
+  width: 100%;
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+.SelectBtn {
+  font-weight: 100;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #8d55c8;
+  border: 1px solid #8d55c8;
+  border-radius: 10px;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.inputSelect {
+  margin-left: 0.5rem;
+  color: #8d55c8;
+  background-color: #fff;
+}
+table {
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 100;
+}
+.name-th {
+  width: 70%;
+  text-align: left;
+}
+td {
+  font-size: 0.73rem;
+  font-weight: 100;
+  text-align: center;
+}
+th {
+  font-size: 0.8rem;
+  font-weight: 100;
+  text-align: left;
+}
+
+th img {
+  width: 80%;
+  text-align: left;
+}
+.published{
+  text-align: center;
+  padding-left: 0.2rem;
+
+}
+.published .img {
+  width: 12%;
+  margin-right: 0.5rem;
+}
+@media (max-width: 430px) {
+
+  .th-img {
+    padding-right: 1rem !important;
+    width: 15% !important;
+    padding-top: 0.5rem !important;
+  }
+    .wrap-div{
+        flex-wrap: wrap;
+    }
+  th img {
+        width: 15%;
+        text-align: left;
+    }
+  .user-btns img {
+    margin-right: 0.7rem;
+    width: 70%;
+    cursor: pointer;
+  }
+  .hide {
+    display: none;
+  }
+  .sort-icons {
+    width: 15%;
+  }
+  .search input {
+    padding-left: 0rem;
+  }
+  .options-small {
+    width: 96%;
+  }
+
+  .download {
+    padding: 0.1rem;
+  }
+  .inputSelect {
+    margin-left: 0.1rem;
+    color: #8d55c8;
+    background-color: #fff;
+  }
+  .SelectBtn {
+    padding: 0.1rem;
+    margin-right: 0rem;
+  }
+  .sortSmallImg {
+    width: 25%;
+    margin-left: 0.2rem;
+  }
+  .sort-small {
+    display: block;
+  }
+  .sort-small button {
+    padding-left: 0.4rem;
+    padding-right: 0.8rem;
+    border: 1px solid #8d55c8;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #8d55c8;
+    white-space: nowrap;
+    font-weight: 100;
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 282px) {
+
+    th .img {
+        width: 100%;
+        padding: 0%;
+        text-align: left;
+    }
+  .user-btns img {
+    margin-right: 0.7rem;
+    width: 100%;
+    cursor: pointer;
+  }
+
+    .th-img {
+      padding: 0% !important;
+      width: 48% !important;
+      padding-top: -0.6rem !important;
+  }
+
+  .p-2 {
+    padding: 0rem !important;
+  }
+  .last-icon {
+    margin-right: 0.2rem;
+  }
+  .search input {
+    width: 310%;
+    padding-left: 0.2rem;
+    margin-left: 0.6rem;
+  }
+  .search img {
+    width: 20%;
+    left: 274%;
+    top: 34%;
+  }
+  .sort-icons {
+    padding: 0rem;
+  }
+}
+
+@media (min-width: 650px) {
+
+  .published .img {
+    width: 11%;
+    margin-right: 0.8rem;
+}
+.th-img img{
+  width: 50%;
+}
+    .th-img{
+      width: 0% ;
+      padding-left: 0.5rem;
+      padding-right: 0.8rem;
+    }}

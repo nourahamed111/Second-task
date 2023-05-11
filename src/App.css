@@ -1,15 +1,16 @@
 .App {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   flex-direction: column;
   padding:0.5%;
   background-color:#EFEFEF;
-  font-family: Montserrat, Medium;
-  font-size: 0.8rem;
+  
+  font-size: 0.8rem; */
   color: #33393C;
+  font-family: Montserrat, Medium;
 }
 
-.headerWrapper {
+/* .headerWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,9 +32,9 @@
   margin-right: 0.7rem;
   width: 15%;
   background-color: transparent;
-}
+} */
 
-.header {
+/* .header {
   float: left;
   margin-left: 2.2rem;
   margin-top: 1rem;
@@ -49,10 +50,9 @@
   margin-bottom: 15px;
   font-weight: 10;
   font-size: 1.6rem;
-}
-
+} */
 /* Media Queries */
-@media screen and (max-width:  300px) {
+/* @media screen and (max-width:  320px) {
 .btnName {
     display: none;
   }
@@ -83,4 +83,4 @@
   .header p{
     font-size: small;
   }
-}
+} */
