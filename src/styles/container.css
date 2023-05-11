@@ -36,22 +36,43 @@
   font-weight: 100;
   font-size: 0.8rem;
 }
-@media (max-width:  430px) {
+@media (max-width: 430px) {
   .header-text h1 {
     font-size: 1.2rem;
+  }
+  .header-text {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dropdown-btn {
+    width: 63%;
+  }
+  .user-btn-name {
+    display: none;
+  }
+  .user-btns img {
+    margin-right: 0.7rem;
+    width: 100%;
+    cursor: pointer;
+  }
 }
-.header-text {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}.dropdown-btn {
-  width: 63%;
-}
-.user-btn-name{
-  display: none;
-}
-.user-btns img {
-  margin-right: 0.7rem;
-  width: 100%;
-  cursor: pointer;
-}
+@media (max-width: 550px) {
+  .header-text h1 {
+    font-size: 1.2rem;
+  }
+  .header-text {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dropdown-btn {
+    width: 63%;
+  }
+  .user-btn-name {
+    display: none;
+  }
+  .user-btns img {
+    margin-right: 0.7rem;
+    width: 100%;
+    cursor: pointer;
+  }
 }

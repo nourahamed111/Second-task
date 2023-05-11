@@ -10,7 +10,9 @@ const Content = () => {
     <>
       <div className="main-container container-fluid">
         <div className=" header-btns d-flex mb-3 align-items-center">
-          <div className="dropdown-btn me-auto"><HeaderDropdown/></div>
+          <div className="dropdown-btn me-auto">
+            <HeaderDropdown />
+          </div>
           <button className="user-btns ">
             <img src={settingsIcon} />
             <span className="user-btn-name">Setting</span>

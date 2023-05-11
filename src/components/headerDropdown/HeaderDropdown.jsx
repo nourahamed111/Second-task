@@ -13,9 +13,15 @@ const HeaderDropdown = () => {
     <div className="dropdown">
       <button className="dropdown-btn" onClick={handleDropdown}>
         {isOpen ? (
-          <img className="show-dropdown" src="https://img.icons8.com/metro/26/1A1A1A/chevron-up.png" />
+          <img
+            className="show-dropdown"
+            src="https://img.icons8.com/metro/26/1A1A1A/chevron-up.png"
+          />
         ) : (
-          <img className="show-dropdown" src="https://img.icons8.com/metro/26/1A1A1A/chevron-down.png" />
+          <img
+            className="show-dropdown"
+            src="https://img.icons8.com/metro/26/1A1A1A/chevron-down.png"
+          />
         )}
         <img src={shapeIcon} />
         ACME GmbH

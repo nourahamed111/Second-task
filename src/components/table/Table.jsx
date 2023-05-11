@@ -4,87 +4,50 @@ import listIcon from "../../icons/list_view.svg";
 import pdfshowIcon from "../../icons/preview_view.svg";
 import searchIcon from "../../icons/search.svg";
 import tilesIcon from "../../icons/tiles_view.svg";
-import pdfIcon from "../../icons/pdf_icon.svg";
-import zipIcon from "../../icons/zip_icon.svg";
-import wordIcon from "../../icons/word_icon.svg";
-import imageIcon from "../../icons/image_icon.svg";
-
 function Table() {
-  const [data, setData] = useState([
-    {
-      id: 1,
-      type: pdfIcon,
-      name: "David_name-Finances_2023.docx",
-      firstDate: new Date("2021-1-15"),
-      secondDate: new Date("2021-2-15"),
-    },
-    {
-      id: 2,
-      type: imageIcon,
-      name: "Eric_name-Finances_2023.docx",
-      firstDate: new Date("2021-3-15"),
-      secondDate: new Date("2021-1-13"),
-    },
-    {
-      id: 3,
-      type: pdfIcon,
-      name: "Saad_name-Finances_2023.docx",
-      firstDate: new Date("2022-6-15"),
-      secondDate: new Date("2021-1-10"),
-    },
-    {
-      id: 4,
-      type: zipIcon,
-      name: "Noura_name-Finances_2023.docx",
-      firstDate: new Date("2021-8-15"),
-      secondDate: new Date("2021-6-5"),
-    },
-    {
-      id: 5,
-      type: wordIcon,
-      name: "Sample_name-Finances_2023.docx",
-      firstDate: new Date("2021-8-14"),
-      secondDate: new Date("2021-3-8"),
-    },
-  ]);
+  const [pdfView, setPdfView] = useState(false);
+  const [showPdf, setShowPdf] = useState(false);
 
-  const [sortKey, setSortKey] = useState("");
   const [sortDirection, setSortDirection] = useState("asc");
-
-  const handleSort = (key) => {
-    if (key === sortKey) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-    } else {
-      setSortKey(key);
-      setSortDirection("asc");
-    }
-    setData((prevData) => {
-      const newData = [...prevData];
-
-      newData.sort((a, b) => {
-        const aValue = a[key];
-        const bValue = b[key];
-
-        if (aValue < bValue) {
-          return sortDirection === "asc" ? -1 : 1;
-        } else if (aValue > bValue) {
-          return sortDirection === "asc" ? 1 : -1;
-        } else {
-          return 0;
-        }
-      });
-
-      return newData;
+  //to get the data
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
+  //sorting functions
+  function sortTable(columnName) {
+    const isAscending = sortDirection === "asc";
+    const sortedProducts = [...products].sort((a, b) => {
+      if (columnName === "name") {
+        return isAscending
+          ? a.title.localeCompare(b.title)
+          : b.title.localeCompare(a.title);
+      } else if (columnName === "price") {
+        return isAscending ? a.price - b.price : b.price - a.price;
+      } else if (columnName === "rate") {
+        return isAscending
+          ? a.rating.rate - b.rating.rate
+          : b.rating.rate - a.rating.rate;
+      }
     });
-  };
-
+    setSortDirection(isAscending ? "desc" : "asc");
+    setProducts(sortedProducts);
+  }
   return (
     <div className="table-container">
+      {/* table header */}
       <div className="d-flex wrap-div">
         <div className="p-2 flex-grow-1">
           <div className="options d-flex justify-content-start">
             <img className="sort-icons" id="list" src={listIcon} />
-            <img className="sort-icons hide" id="pdf" src={pdfshowIcon} />
+            <img
+              className={`sort-icons ${pdfView ? "hide" : ""}`}
+              id="pdf"
+              src={pdfshowIcon}
+              onClick={() => setShowPdf(!showPdf)}
+            />
             <img className="sort-icons last-icon" id="tiles" src={tilesIcon} />
             <div className="search">
               <input placeholder="search"></input>
@@ -117,66 +80,90 @@ function Table() {
           </div>
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th className="hide th-img" scope="col">
-              Type
-            </th>
-            <th
-              className="hide table-th"
-              scope="col"
-              onClick={() => handleSort("name")}
-            >
-              Name
-            </th>
-            <th
-              scope="col"
-              className="published hide"
-              onClick={() => handleSort("firstDate")}
-            >
-              {" "}
-              Published
-              {sortDirection === "asc" ? (
-                <img
-                  className="img"
-                  src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
-                />
-              ) : (
-                <img
-                  className="img"
-                  src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
-                />
-              )}
-            </th>
-            <th
-              className="hide download"
-              scope="col"
-              onClick={() => handleSort("secondDate")}
-            >
-              Last Download
-            </th>
-            <th className="hide" scope="col">
-              Download
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td className="th-img" scope="row">
-                <img src={item.type} alt={item.type} />
-              </td>
-              <td className="name-th">{item.name}</td>
-              <td className="hide">{item.firstDate.toLocaleDateString()}</td>
-              <td className="hide">{item.secondDate.toLocaleDateString()}</td>
-              <td className="inputTd">
-                <input type="checkbox" />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* show the data in table  */}
+      <div className="imagePdfShow">
+        <div className="table-container">
+          <table className={`table-container ${showPdf ? "half-width" : ""}`}>
+            <thead>
+              <tr>
+                <th className="hide th-img" scope="col">
+                  Type
+                </th>
+                <th
+                  className="hide table-th"
+                  scope="col"
+                  onClick={() => sortTable("name")}
+                >
+                  Name
+                </th>
+                <th
+                  scope="col"
+                  className="published hide"
+                  onClick={() => sortTable("price")}
+                >
+                  {" "}
+                  Price
+                  {sortDirection === "asc" ? (
+                    <img
+                      className="img"
+                      src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
+                    />
+                  ) : (
+                    <img
+                      className="img"
+                      src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
+                    />
+                  )}
+                </th>
+                <th
+                  className="hide download"
+                  scope="col"
+                  onClick={() => sortTable("rate")}
+                >
+                  Product Rate
+                </th>
+                <th className="hide" scope="col">
+                  Download
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.slice(0, 5).map((product) => (
+                <tr key={product.id}>
+                  <td className="th-img" scope="row">
+                    <img
+                      className="productImage"
+                      src={product.image}
+                      alt={product.title}
+                    />
+                  </td>
+                  <td className="name-th">{product.title.slice(0, 20)}</td>
+
+                  <td className="hide">{product.price}</td>
+                  <td className="hide">{product.rating.rate}</td>
+                  <td className="inputTd">
+                    <input type="checkbox" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {showPdf && (
+          <div className="pdf-preview-container ">
+            <div className="pdf-preview text-center">
+              <img
+                className="pdf-img rounded"
+                src={products.find((product) => product.id === 1).image}
+                alt={products.find((product) => product.id === 1).title}
+              />
+              <h6 className="pdf-img-title">
+                {products.find((product) => product.id === 1).title}
+              </h6>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
