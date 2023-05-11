@@ -7,7 +7,7 @@ import tilesIcon from "../../icons/tiles_view.svg";
 function Table() {
   const [pdfView, setPdfView] = useState(false);
   const [showPdf, setShowPdf] = useState(false);
-
+  const [selectAll, setSelectAll] = useState(false);
   const [sortDirection, setSortDirection] = useState("asc");
   //to get the data
   const [products, setProducts] = useState([]);
@@ -34,6 +34,13 @@ function Table() {
     });
     setSortDirection(isAscending ? "desc" : "asc");
     setProducts(sortedProducts);
+  }
+  function handleSelectAll() {
+    setSelectAll(!selectAll);
+    const checkboxes = document.querySelectorAll(".download-checkbox");
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = !selectAll;
+    });
   }
   return (
     <div className="table-container">
@@ -71,8 +78,10 @@ function Table() {
             </button>
           </div>
           <div className="selectAll  p-2">
-            <button className="SelectBtn">
-              Select All <input className="inputSelect" type="checkbox"></input>
+            <button className="SelectBtn" >
+              Select All
+              <input type="checkbox" defaultChecked={selectAll} onClick={handleSelectAll} />
+
             </button>
           </div>
           <div className="download p-2">
@@ -142,7 +151,8 @@ function Table() {
                   <td className="hide">{product.price}</td>
                   <td className="hide">{product.rating.rate}</td>
                   <td className="inputTd">
-                    <input type="checkbox" />
+                    <input  className="download-checkbox" type="checkbox"  defaultChecked={false}
+  />
                   </td>
                 </tr>
               ))}
