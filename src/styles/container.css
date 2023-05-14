@@ -87,5 +87,10 @@
   .user-btns {
     width: 11%;
     height: 1.5rem;
+  }
 }
+@media (min-width: 1020px) {
+  .user-btns {
+    width: 8%;
+  }
 }

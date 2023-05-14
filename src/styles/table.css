@@ -3,7 +3,7 @@
   background-color: #fff;
   border-radius: 10px;
 }
-hr{
+hr {
   width: 100%;
 }
 .pdf-preview-container {
@@ -37,13 +37,13 @@ table {
   position: relative;
   margin-right: 1rem;
 }
-.table-wrapper{
+.table-wrapper {
   margin: 0rem;
 }
-.selectAll{
+.selectAll {
   margin: 0.8rem;
 }
-.download{
+.download {
   margin: 0.8rem;
 }
 .search input {
@@ -144,7 +144,7 @@ th img {
     background-color: #fff;
     border-radius: 10px;
   }
-  
+
   .user-btns img {
     margin-right: 0.7rem;
     width: 100%;
@@ -179,7 +179,7 @@ th img {
     margin-right: 0.2rem;
   }
   .search input {
-    margin-left: 2.5rem; 
+    margin-left: 2.5rem;
   }
   .options-small {
     width: 96%;
@@ -295,13 +295,13 @@ th img {
   }
   .selectAll {
     margin: 0rem;
-}
-.download {
-  margin: 0rem;
-}
-.search input {
-  margin-left: 4.5rem;
-}
+  }
+  .download {
+    margin: 0rem;
+  }
+  .search input {
+    margin-left: 5.5rem;
+  }
 }
 @media (max-width: 282px) {
   th .img {
@@ -322,8 +322,8 @@ th img {
     width: 29% !important;
     padding-top: -0.6rem !important;
   }
-  .wrap-div{
-      margin-right: -2rem;
+  .wrap-div {
+    margin-right: -2rem;
   }
 
   .p-2 {
@@ -332,40 +332,42 @@ th img {
   .last-icon {
     margin-right: 0.2rem;
   }
-  .download{
+  .download {
     margin: 0rem;
   }
   .search input {
-    width: 265%;
+    width: 220%;
     padding-left: 0.2rem;
     margin-left: 1rem;
   }
   .selectAll {
     margin: 0rem;
-}
+  }
   .options-small {
     width: 85%;
-}
+  }
   .search img {
     width: 20%;
-    left: 274%;
-    top: 34%;
+    left: 232%;
+    top: 32%;
   }
   .sort-icons {
     padding: 0rem;
   }
   .dropdown-btn {
     width: 71% !important;
-}
- 
-  
+  }
 }
 
 @media (min-width: 650px) {
   .download {
-    margin: 0.8rem;
+    margin: 0rem;
     margin-left: -2rem;
-}
+  }
+  .selectAll {
+    margin: 0rem;
+    margin-right: 0.2rem;
+  }
   .published .img {
     width: 11%;
     margin-right: 0.8rem;
@@ -380,13 +382,16 @@ th img {
     padding-right: 0.8rem;
   }
   .sort-icons {
-    width: 7%;
-}
+    width: 8%;
+  }
 }
 
 @media (min-width: 1020px) {
   .table-container {
     padding: 0rem;
+  }
+  .download button {
+    width: 102%;
   }
 
   .table-container.half-width {
@@ -422,47 +427,49 @@ th img {
   }
   .sort-icons {
     width: 5%;
-}
-.th-img img {
-  width: 92%;
-  padding-bottom: 0.1rem;
-}
-td{
-  font-size: 1rem;
-}
-th{
-  font-size: 1rem;
-}
+  }
+  .th-img img {
+    width: 92%;
+    padding-bottom: 0.1rem;
+  }
+  td {
+    font-size: 1rem;
+  }
+  th {
+    font-size: 1rem;
+  }
 
-.download button{
-  font-size: 1rem;
-}
-.SelectBtn{
-  font-size: 1rem;
-}
-.sort-btn{
-  font-size: 1rem;
-  height: 1.6rem;
-}
-.search input{
-  font-size: 1rem;
-  height: 1.6rem;
-}
-.header-text p {
-  font-size: 1rem;
-}
-.header-text h1 {
-  font-size: 1.9rem;
-}
-.user-btns{
-  font-size: 1rem;
-}
+  .download button {
+    font-size: 1rem;
+  }
+  .SelectBtn {
+    font-size: 1rem;
+  }
+  .sort-btn {
+    font-size: 1rem;
+    height: 1.6rem;
+  }
+  .search input {
+    font-size: 1rem;
+    height: 1.6rem;
+  }
+  .header-text p {
+    font-size: 1rem;
+  }
+  .header-text h1 {
+    font-size: 1.9rem;
+  }
+  .user-btns {
+    font-size: 1rem;
+  }
 }
 @media (max-width: 380px) {
   .search input {
-    margin-left: 2.5rem;
+    margin-left: 3.3rem;
   }
 }
-
-
-
+@media (max-width: 330px) {
+  .search input {
+    margin-left: 1.8rem;
+  }
+}
