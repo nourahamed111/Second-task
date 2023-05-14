@@ -16,7 +16,7 @@
       border: none;
       border-radius: 10px;
       padding: 0rem;
-      width: 100%;
+      width: 60%;
       text-align: center;
       height: 1.7rem;
     }
@@ -83,5 +83,28 @@
     .show-dropdown{
       display: inline;
     }
+  }
+
+  @media (min-width:  700px) {
+    .dropdown-btn {
+      width: 25%;
+      height: 1.7rem;
+  }
+  }
+  @media (max-width:  800px) {
+    .dropdown-btn {
+      width: 30%;
+  }
+  }
+  @media (max-width:  500px) {
+    .dropdown-btn {
+      width: 75%;
+  }
+  }
+
+  @media (max-width:  200px) {
+    .dropdown-btn {
+      width: 73%
+  }
   }
     

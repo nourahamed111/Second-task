@@ -24,7 +24,7 @@ const Content = () => {
         </div>
         <div className="header-text">
           <h1>Welcome Tim</h1>
-          <p>Here you can find all documents</p>
+          <p>In the collection below you can find and download all the available documents for your client.</p>
         </div>
         <Table />
       </div>
