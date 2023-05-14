@@ -46,7 +46,7 @@ function Table() {
     <div className="table-container">
       {/* table header */}
       <div className="d-flex wrap-div">
-        <div className="p-2 flex-grow-1">
+        <div className="p-2 flex-grow-1 table-wrapper">
           <div className="options d-flex justify-content-start">
             <img className="sort-icons" id="list" src={listIcon} />
             <img
@@ -80,7 +80,7 @@ function Table() {
           <div className="selectAll  p-2">
             <button className="SelectBtn" >
               Select All
-              <input type="checkbox" defaultChecked={selectAll} onClick={handleSelectAll} />
+              <input className="inputSelect" type="checkbox" defaultChecked={selectAll} onClick={handleSelectAll} />
 
             </button>
           </div>
@@ -135,8 +135,15 @@ function Table() {
                   Download
                 </th>
               </tr>
+              <tr>
+    <td colspan="5">
+        <hr/>
+    </td>
+</tr>
             </thead>
+      
             <tbody>
+               
               {products.slice(0, 5).map((product) => (
                 <tr key={product.id}>
                   <td className="th-img" scope="row">

@@ -3,6 +3,9 @@
   background-color: #fff;
   border-radius: 10px;
 }
+hr{
+  width: 100%;
+}
 .pdf-preview-container {
   display: none;
 }
@@ -18,7 +21,7 @@ table {
   width: 50%;
 }
 .sort-icons {
-  width: 6%;
+  width: 4%;
   padding: 0.2rem;
   margin-right: 0.2rem;
 }
@@ -34,9 +37,19 @@ table {
   position: relative;
   margin-right: 1rem;
 }
+.table-wrapper{
+  margin: 0rem;
+}
+.selectAll{
+  margin: 0.8rem;
+}
+.download{
+  margin: 0.8rem;
+}
 .search input {
   font-weight: 100;
   font-size: 0.9rem;
+  height: 1.4rem;
   background-color: #efefef;
   border: none;
   border-radius: 6px;
@@ -61,6 +74,7 @@ table {
   width: 100%;
   font-weight: 100;
   font-size: 0.9rem;
+  height: 1.4rem;
   margin-left: 0.2rem;
   white-space: nowrap;
 }
@@ -71,10 +85,11 @@ table {
 }
 .download button {
   border: 3px#8D55C8;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #8d55c8;
   color: aliceblue;
-  width: 100%;
+  width: 110%;
+  height: 1.5rem;
   font-weight: 100;
   font-size: 0.8rem;
 }
@@ -87,12 +102,13 @@ table {
   background-color: #fff;
   color: #8d55c8;
   border: 1px solid #8d55c8;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-right: 1rem;
   white-space: nowrap;
+  height: 1.5rem;
 }
 .inputSelect {
-  margin-left: 0.5rem;
+  margin-left: 0.2rem;
   color: #8d55c8;
   background-color: #fff;
 }
@@ -128,7 +144,7 @@ th img {
     background-color: #fff;
     border-radius: 10px;
   }
-
+  
   .user-btns img {
     margin-right: 0.7rem;
     width: 100%;
@@ -163,7 +179,7 @@ th img {
     margin-right: 0.2rem;
   }
   .search input {
-    padding-left: 0rem;
+    margin-left: 2.5rem; 
   }
   .options-small {
     width: 96%;
@@ -213,7 +229,7 @@ th img {
     cursor: pointer;
   }
   .th-img img {
-    width: 32% !important;
+    width: 50% !important;
   }
   .th-img {
     padding-right: 1rem !important;
@@ -277,6 +293,15 @@ th img {
     font-weight: 100;
     font-size: 0.8rem;
   }
+  .selectAll {
+    margin: 0rem;
+}
+.download {
+  margin: 0rem;
+}
+.search input {
+  margin-left: 4.5rem;
+}
 }
 @media (max-width: 282px) {
   th .img {
@@ -297,6 +322,9 @@ th img {
     width: 29% !important;
     padding-top: -0.6rem !important;
   }
+  .wrap-div{
+      margin-right: -2rem;
+  }
 
   .p-2 {
     padding: 0.2rem !important;
@@ -304,11 +332,20 @@ th img {
   .last-icon {
     margin-right: 0.2rem;
   }
-  .search input {
-    width: 310%;
-    padding-left: 0.2rem;
-    margin-left: 0.6rem;
+  .download{
+    margin: 0rem;
   }
+  .search input {
+    width: 265%;
+    padding-left: 0.2rem;
+    margin-left: 1rem;
+  }
+  .selectAll {
+    margin: 0rem;
+}
+  .options-small {
+    width: 85%;
+}
   .search img {
     width: 20%;
     left: 274%;
@@ -317,21 +354,34 @@ th img {
   .sort-icons {
     padding: 0rem;
   }
+  .dropdown-btn {
+    width: 71% !important;
+}
+ 
+  
 }
 
 @media (min-width: 650px) {
+  .download {
+    margin: 0.8rem;
+    margin-left: -2rem;
+}
   .published .img {
     width: 11%;
     margin-right: 0.8rem;
   }
   .th-img img {
-    width: 50%;
+    width: 75%;
+    padding-bottom: 0.1rem;
   }
   .th-img {
     width: 0%;
     padding-left: 0.5rem;
     padding-right: 0.8rem;
   }
+  .sort-icons {
+    width: 7%;
+}
 }
 
 @media (min-width: 1020px) {
@@ -370,4 +420,49 @@ th img {
     display: block;
     width: 50%;
   }
+  .sort-icons {
+    width: 5%;
 }
+.th-img img {
+  width: 92%;
+  padding-bottom: 0.1rem;
+}
+td{
+  font-size: 1rem;
+}
+th{
+  font-size: 1rem;
+}
+
+.download button{
+  font-size: 1rem;
+}
+.SelectBtn{
+  font-size: 1rem;
+}
+.sort-btn{
+  font-size: 1rem;
+  height: 1.6rem;
+}
+.search input{
+  font-size: 1rem;
+  height: 1.6rem;
+}
+.header-text p {
+  font-size: 1rem;
+}
+.header-text h1 {
+  font-size: 1.9rem;
+}
+.user-btns{
+  font-size: 1rem;
+}
+}
+@media (max-width: 380px) {
+  .search input {
+    margin-left: 2.5rem;
+  }
+}
+
+
+
