@@ -5,13 +5,19 @@ import shapeIcon from "../../icons/imaginary_brand.svg";
 const HeaderDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDropdown = () => {
-    setIsOpen(!isOpen);
+  const handleMouseEnter = () => {
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsOpen(false);
   };
 
   return (
-    <div className="dropdown">
-      <button className="dropdown-btn" onClick={handleDropdown}>
+    <div className="dropdown"
+         onMouseEnter={handleMouseEnter}
+         onMouseLeave={handleMouseLeave}>
+      <button className="dropdown-btn">
         {isOpen ? (
           <img
             className="show-dropdown"
@@ -44,3 +50,4 @@ const HeaderDropdown = () => {
 };
 
 export default HeaderDropdown;
+

@@ -5,6 +5,8 @@ import pdfshowIcon from "../../icons/preview_view.svg";
 import searchIcon from "../../icons/search.svg";
 import tilesIcon from "../../icons/tiles_view.svg";
 function Table() {
+  const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
+  const [showDropdown, setShowDropdown] = useState(false);
   const [pdfView, setPdfView] = useState(false);
   const [showPdf, setShowPdf] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
@@ -12,10 +14,14 @@ function Table() {
   //to get the data
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+    async function fetchProducts() {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchProducts();
   }, []);
+  
   //sorting functions
   function sortTable(columnName) {
     const isAscending = sortDirection === "asc";
@@ -35,6 +41,7 @@ function Table() {
     setSortDirection(isAscending ? "desc" : "asc");
     setProducts(sortedProducts);
   }
+  //checkbox
   function handleSelectAll() {
     setSelectAll(!selectAll);
     const checkboxes = document.querySelectorAll(".download-checkbox");
@@ -42,13 +49,30 @@ function Table() {
       checkbox.checked = !selectAll;
     });
   }
+  //dropdown menu
+  function handleSortClick() {
+    setSortDirectionDropdown(sortDirectionDropdown === "down" ? "up" : "down");
+  }
+  function handleDropdownClick() {
+    setShowDropdown(!showDropdown);
+  }
+
   return (
     <div className="table-container">
       {/* table header */}
       <div className="d-flex wrap-div">
         <div className="p-2 flex-grow-1 table-wrapper">
           <div className="options d-flex justify-content-start">
-            <img className="sort-icons" id="list" src={listIcon} />
+            <img
+              className={`sort-icons ${pdfView ? "hide" : ""}`}
+              id="list"
+              src={listIcon}
+              onClick={() => {
+                setShowPdf(false);
+                setPdfView(true);
+              }}
+            />
+
             <img
               className={`sort-icons hide ${pdfView ? "hide" : ""}`}
               id="pdf"
@@ -60,10 +84,23 @@ function Table() {
               <input placeholder="search"></input>
               <img className="search-icon" src={searchIcon} />
             </div>
-            <button className="sort-btn hide">
-              sort by: published descending
-              <img src="https://img.icons8.com/material/24/8D55C8/give-way--v1.png" />
-            </button>
+            <div className="dropdownContainer">
+              <button className="sort-btn hide" onClick={handleSortClick}>
+                sort by: published descending
+                <img
+                  className="dropdownArrow"
+                  src="https://img.icons8.com/material-rounded/24/8D55C8/expand-arrow--v1.png"
+                  onClick={handleDropdownClick}
+                />
+              </button>
+              {showDropdown && (
+                <ul className="dropdownList">
+                  <li>Option 1</li>
+                  <li>Option 2</li>
+                  <li>Option 3</li>
+                </ul>
+              )}
+            </div>
           </div>
         </div>
 
@@ -78,10 +115,14 @@ function Table() {
             </button>
           </div>
           <div className="selectAll  p-2">
-            <button className="SelectBtn" >
+            <button className="SelectBtn">
               Select All
-              <input className="inputSelect" type="checkbox" defaultChecked={selectAll} onClick={handleSelectAll} />
-
+              <input
+                className="inputSelect"
+                type="checkbox"
+                defaultChecked={selectAll}
+                onClick={handleSelectAll}
+              />
             </button>
           </div>
           <div className="download p-2">
@@ -136,14 +177,13 @@ function Table() {
                 </th>
               </tr>
               <tr>
-    <td colspan="5">
-        <hr/>
-    </td>
-</tr>
+                <td colspan="5">
+                  <hr />
+                </td>
+              </tr>
             </thead>
-      
+
             <tbody>
-               
               {products.slice(0, 5).map((product) => (
                 <tr key={product.id}>
                   <td className="th-img" scope="row">
@@ -158,8 +198,11 @@ function Table() {
                   <td className="hide">{product.price}</td>
                   <td className="hide">{product.rating.rate}</td>
                   <td className="inputTd">
-                    <input  className="download-checkbox" type="checkbox"  defaultChecked={false}
-  />
+                    <input
+                      className="download-checkbox"
+                      type="checkbox"
+                      defaultChecked={false}
+                    />
                   </td>
                 </tr>
               ))}
