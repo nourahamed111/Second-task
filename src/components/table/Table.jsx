@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../styles/table.css";
 import listIcon from "../../icons/list_view.svg";
 import pdfshowIcon from "../../icons/preview_view.svg";
 import searchIcon from "../../icons/search.svg";
 import tilesIcon from "../../icons/tiles_view.svg";
 function Table() {
+  const checkboxesRef = useRef([]);
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
   const [showDropdown, setShowDropdown] = useState(false);
   const [pdfView, setPdfView] = useState(false);
@@ -21,7 +22,7 @@ function Table() {
     }
     fetchProducts();
   }, []);
-  
+
   //sorting functions
   function sortTable(columnName) {
     const isAscending = sortDirection === "asc";
@@ -44,8 +45,7 @@ function Table() {
   //checkbox
   function handleSelectAll() {
     setSelectAll(!selectAll);
-    const checkboxes = document.querySelectorAll(".download-checkbox");
-    checkboxes.forEach((checkbox) => {
+    checkboxesRef.current.forEach((checkbox) => {
       checkbox.checked = !selectAll;
     });
   }
@@ -184,7 +184,7 @@ function Table() {
             </thead>
 
             <tbody>
-              {products.slice(0, 5).map((product) => (
+              {products.slice(0, 5).map((product, index) => (
                 <tr key={product.id}>
                   <td className="th-img" scope="row">
                     <img
@@ -194,7 +194,6 @@ function Table() {
                     />
                   </td>
                   <td className="name-th">{product.title.slice(0, 20)}</td>
-
                   <td className="hide">{product.price}</td>
                   <td className="hide">{product.rating.rate}</td>
                   <td className="inputTd">
@@ -202,6 +201,7 @@ function Table() {
                       className="download-checkbox"
                       type="checkbox"
                       defaultChecked={false}
+                      ref={(el) => (checkboxesRef.current[index] = el)}
                     />
                   </td>
                 </tr>
