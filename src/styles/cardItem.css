@@ -1,0 +1,14 @@
+.card{
+    width: 8rem;
+    margin: 1rem;
+    display: inline-block;
+    background-color:  #efefef;
+}
+.cardContainer{
+    display:flex;
+    justify-content: center;
+}
+.card-img-top{
+    max-height: 90px;
+    padding: 1rem;
+}

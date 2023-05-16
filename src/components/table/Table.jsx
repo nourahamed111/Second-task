@@ -6,6 +6,7 @@ import searchIcon from "../../icons/search.svg";
 import tilesIcon from "../../icons/tiles_view.svg";
 function Table() {
   const checkboxesRef = useRef([]);
+  const [showTable, setShowTable] = useState(true);
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
   const [showDropdown, setShowDropdown] = useState(false);
   const [pdfView, setPdfView] = useState(false);
@@ -22,7 +23,6 @@ function Table() {
     }
     fetchProducts();
   }, []);
-
   //sorting functions
   function sortTable(columnName) {
     const isAscending = sortDirection === "asc";
@@ -42,35 +42,32 @@ function Table() {
     setSortDirection(isAscending ? "desc" : "asc");
     setProducts(sortedProducts);
   }
-  //checkbox
-  function handleSelectAll() {
+  const handleSelectAll = () => {
     setSelectAll(!selectAll);
     checkboxesRef.current.forEach((checkbox) => {
       checkbox.checked = !selectAll;
     });
-  }
+  };
   //dropdown menu
-  function handleSortClick() {
+  const handleSortClick = () => {
     setSortDirectionDropdown(sortDirectionDropdown === "down" ? "up" : "down");
-  }
-  function handleDropdownClick() {
+  };
+  const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
-  }
-
+  };
+  //return code
   return (
     <div className="table-container">
-      {/* table header */}
       <div className="d-flex wrap-div">
         <div className="p-2 flex-grow-1 table-wrapper">
           <div className="options d-flex justify-content-start">
             <img
-              className={`sort-icons ${pdfView ? "hide" : ""}`}
+              className={`sort-icons ${pdfView ? "hide" : ""} ${
+                showTable ? "hide" : ""
+              }`}
               id="list"
               src={listIcon}
-              onClick={() => {
-                setShowPdf(false);
-                setPdfView(true);
-              }}
+              onClick={() => setShowTable(true)}
             />
 
             <img
@@ -79,7 +76,17 @@ function Table() {
               src={pdfshowIcon}
               onClick={() => setShowPdf(!showPdf)}
             />
-            <img className="sort-icons last-icon" id="tiles" src={tilesIcon} />
+            <img
+              className={`sort-icons ${pdfView ? "hide" : ""} ${
+                showTable ? "" : "hide"
+              }`}
+              id="tiles"
+              src={tilesIcon}
+              onClick={() => {
+                setShowTable(false);
+                setShowPdf(false);
+              }}
+            />
             <div className="search">
               <input placeholder="search"></input>
               <img className="search-icon" src={searchIcon} />
@@ -103,7 +110,6 @@ function Table() {
             </div>
           </div>
         </div>
-
         <div className="options-small d-flex justify-content-evenly">
           <div className="sort-small p-2">
             <button>
@@ -133,81 +139,88 @@ function Table() {
       {/* show the data in table  */}
       <div className="imagePdfShow">
         <div className="table-container">
-          <table className={`table-container ${showPdf ? "half-width" : ""}`}>
-            <thead>
-              <tr>
-                <th className="hide th-img" scope="col">
-                  Type
-                </th>
-                <th
-                  className="hide table-th"
-                  scope="col"
-                  onClick={() => sortTable("name")}
-                >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  className="published hide"
-                  onClick={() => sortTable("price")}
-                >
-                  {" "}
-                  Price
-                  {sortDirection === "asc" ? (
-                    <img
-                      className="img"
-                      src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
-                    />
-                  ) : (
-                    <img
-                      className="img"
-                      src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
-                    />
-                  )}
-                </th>
-                <th
-                  className="hide download"
-                  scope="col"
-                  onClick={() => sortTable("rate")}
-                >
-                  Product Rate
-                </th>
-                <th className="hide" scope="col">
-                  Download
-                </th>
-              </tr>
-              <tr>
-                <td colspan="5">
-                  <hr />
-                </td>
-              </tr>
-            </thead>
-
-            <tbody>
-              {products.slice(0, 5).map((product, index) => (
-                <tr key={product.id}>
-                  <td className="th-img" scope="row">
-                    <img
-                      className="productImage"
-                      src={product.image}
-                      alt={product.title}
-                    />
-                  </td>
-                  <td className="name-th">{product.title.slice(0, 20)}</td>
-                  <td className="hide">{product.price}</td>
-                  <td className="hide">{product.rating.rate}</td>
-                  <td className="inputTd">
-                    <input
-                      className="download-checkbox"
-                      type="checkbox"
-                      defaultChecked={false}
-                      ref={(el) => (checkboxesRef.current[index] = el)}
-                    />
+          {showTable ? (
+            <table className={`table-container ${showPdf ? "half-width" : ""}`}>
+              <thead>
+                <tr>
+                  <th className="hide th-img" scope="col">
+                    Type
+                  </th>
+                  <th
+                    className="hide table-th"
+                    scope="col"
+                    onClick={() => sortTable("name")}
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="published hide"
+                    onClick={() => sortTable("price")}
+                  >
+                    {" "}
+                    Price
+                    {sortDirection === "asc" ? (
+                      <img
+                        className="img"
+                        src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
+                      />
+                    ) : (
+                      <img
+                        className="img"
+                        src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
+                      />
+                    )}
+                  </th>
+                  <th
+                    className="hide download"
+                    scope="col"
+                    onClick={() => sortTable("rate")}
+                  >
+                    Product Rate
+                  </th>
+                  <th className="hide" scope="col">
+                    Download
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="5">
+                    <hr />
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody>
+                {products.slice(0, 5).map((product, index) => (
+                  <tr key={product.id}>
+                    <td className="th-img" scope="row">
+                      <img
+                        className="productImage"
+                        src={product.image}
+                        alt={product.title}
+                      />
+                    </td>
+                    <td className="name-th">{product.title.slice(0, 20)}</td>
+                    <td className="hide">{product.price}</td>
+                    <td className="hide">{product.rating.rate}</td>
+                    <td className="inputTd">
+                      <input
+                        className="download-checkbox"
+                        type="checkbox"
+                        defaultChecked={false}
+                        ref={(el) => (checkboxesRef.current[index] = el)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            //card show part
+            <div className="card-container">
+              <h1>Hello</h1>
+            </div>
+          )}
         </div>
         {showPdf && (
           <div className="pdf-preview-container ">
