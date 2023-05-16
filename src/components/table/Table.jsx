@@ -42,104 +42,12 @@ function Table() {
     setSortDirection(isAscending ? "desc" : "asc");
     setProducts(sortedProducts);
   }
-  const handleSelectAll = () => {
-    setSelectAll(!selectAll);
-    checkboxesRef.current.forEach((checkbox) => {
-      checkbox.checked = !selectAll;
-    });
-  };
-  //dropdown menu
-  const handleSortClick = () => {
-    setSortDirectionDropdown(sortDirectionDropdown === "down" ? "up" : "down");
-  };
-  const handleDropdownClick = () => {
-    setShowDropdown(!showDropdown);
-  };
   //return code
   return (
-    <div className="table-container">
-      <div className="d-flex wrap-div">
-        <div className="p-2 flex-grow-1 table-wrapper">
-          <div className="options d-flex justify-content-start">
-            <img
-              className={`sort-icons ${pdfView ? "hide" : ""} ${
-                showTable ? "hide" : ""
-              }`}
-              id="list"
-              src={listIcon}
-              onClick={() => setShowTable(true)}
-            />
-
-            <img
-              className={`sort-icons hide ${pdfView ? "hide" : ""}`}
-              id="pdf"
-              src={pdfshowIcon}
-              onClick={() => setShowPdf(!showPdf)}
-            />
-            <img
-              className={`sort-icons ${pdfView ? "hide" : ""} ${
-                showTable ? "" : "hide"
-              }`}
-              id="tiles"
-              src={tilesIcon}
-              onClick={() => {
-                setShowTable(false);
-                setShowPdf(false);
-              }}
-            />
-            <div className="search">
-              <input placeholder="search"></input>
-              <img className="search-icon" src={searchIcon} />
-            </div>
-            <div className="dropdownContainer">
-              <button className="sort-btn hide" onClick={handleSortClick}>
-                sort by: published descending
-                <img
-                  className="dropdownArrow"
-                  src="https://img.icons8.com/material-rounded/24/8D55C8/expand-arrow--v1.png"
-                  onClick={handleDropdownClick}
-                />
-              </button>
-              {showDropdown && (
-                <ul className="dropdownList">
-                  <li>Option 1</li>
-                  <li>Option 2</li>
-                  <li>Option 3</li>
-                </ul>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="options-small d-flex justify-content-evenly">
-          <div className="sort-small p-2">
-            <button>
-              sort by
-              <img
-                className="sortSmallImg"
-                src="https://img.icons8.com/material/24/8D55C8/give-way--v1.png"
-              />
-            </button>
-          </div>
-          <div className="selectAll  p-2">
-            <button className="SelectBtn">
-              Select All
-              <input
-                className="inputSelect"
-                type="checkbox"
-                defaultChecked={selectAll}
-                onClick={handleSelectAll}
-              />
-            </button>
-          </div>
-          <div className="download p-2">
-            <button>Download</button>
-          </div>
-        </div>
-      </div>
+    
+      <>
       {/* show the data in table  */}
-      <div className="imagePdfShow">
         <div className="table-container">
-          {showTable ? (
             <table className={`table-container ${showPdf ? "half-width" : ""}`}>
               <thead>
                 <tr>
@@ -189,7 +97,6 @@ function Table() {
                   </td>
                 </tr>
               </thead>
-
               <tbody>
                 {products.slice(0, 5).map((product, index) => (
                   <tr key={product.id}>
@@ -215,29 +122,9 @@ function Table() {
                 ))}
               </tbody>
             </table>
-          ) : (
-            //card show part
-            <div className="card-container">
-              <h1>Hello</h1>
-            </div>
-          )}
         </div>
-        {showPdf && (
-          <div className="pdf-preview-container ">
-            <div className="pdf-preview text-center">
-              <img
-                className="pdf-img rounded"
-                src={products.find((product) => product.id === 1).image}
-                alt={products.find((product) => product.id === 1).title}
-              />
-              <h6 className="pdf-img-title">
-                {products.find((product) => product.id === 1).title}
-              </h6>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+        </>
+     
   );
 }
 export default Table;

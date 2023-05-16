@@ -1,10 +1,10 @@
 import React from "react";
 import "../../styles/container.css";
-import Table from "../table/Table";
 import shapeIcon from "../../icons/imaginary_brand.svg";
 import settingsIcon from "../../icons/settings.svg";
 import logoutIcon from "../../icons/logout.svg";
 import HeaderDropdown from "../headerDropdown/HeaderDropdown";
+import TableWrapper from "../tableWrapper/TableWrapper";
 const Content = () => {
   return (
     <>
@@ -26,7 +26,7 @@ const Content = () => {
           <h1>Welcome Tim</h1>
           <p>In the collection below you can find and download all the available documents for your client.</p>
         </div>
-        <Table />
+        <TableWrapper />
       </div>
     </>
   );

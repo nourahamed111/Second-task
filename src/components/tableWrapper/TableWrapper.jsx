@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import Table from "../table/Table";
+import PdfItem from "../pdfComponent/PdfItem";
+import CardItems from "../cardItems/CardItems"
 import "../../styles/table.css";
 import listIcon from "../../icons/list_view.svg";
 import pdfshowIcon from "../../icons/preview_view.svg";
@@ -7,11 +10,21 @@ import tilesIcon from "../../icons/tiles_view.svg";
 
 const TableWrapper = () => {
   const checkboxesRef = useRef([]);
+  const [viewMode, setViewMode] = useState("table");
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [pdfView, setPdfView] = useState(false);
-  const [showPdf, setShowPdf] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
+  //fetching the data 
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchProducts();
+  }, []);
+  //select all function
   const handleSelectAll=()=> {
     setSelectAll(!selectAll);
     checkboxesRef.current.forEach((checkbox) => {
@@ -25,29 +38,34 @@ const TableWrapper = () => {
   const handleDropdownClick=()=> {
     setShowDropdown(!showDropdown);
   }
-
+//show the pdf and cards
+const handleIconClick = (mode) => {
+  setViewMode(mode);
+};
   return (
-    <>
+    <div className="table-container">
       <div className="d-flex wrap-div">
         <div className="p-2 flex-grow-1 table-wrapper">
           <div className="options d-flex justify-content-start">
-            <img
-              className={`sort-icons ${pdfView ? "hide" : ""}`}
+          <img
+              className={`sort-icons ${viewMode === "table" ? "" : "hide"}`}
               id="list"
               src={listIcon}
-              onClick={() => {
-                setShowPdf(false);
-                setPdfView(true);
-              }}
+              onClick={() => handleIconClick("table")}
             />
 
             <img
-              className={`sort-icons hide ${pdfView ? "hide" : ""}`}
+              className={`sort-icons ${viewMode === "table" ? "hide" : ""}`}
               id="pdf"
               src={pdfshowIcon}
-              onClick={() => setShowPdf(!showPdf)}
+              onClick={() => handleIconClick("pdf")}
             />
-            <img className="sort-icons last-icon" id="tiles" src={tilesIcon} />
+            <img
+              className="sort-icons last-icon"
+              id="tiles"
+              src={tilesIcon}
+              onClick={() => handleIconClick("cards")}
+            />
             <div className="search">
               <input placeholder="search"></input>
               <img className="search-icon" src={searchIcon} />
@@ -97,7 +115,19 @@ const TableWrapper = () => {
           </div>
         </div>
       </div>
-    </>
+      {viewMode === "table" && <Table data={products} />}
+      {viewMode === "pdf" && (
+        <div className="pdf-container">
+          <div className="half-width-table">
+            <Table />
+          </div>
+          <div className="pdf-item">
+            <PdfItem data={products} />
+          </div>
+        </div>
+      )}
+      {viewMode === "cards" && <CardItems data={products} />}
+    </div>
   );
 };
 
