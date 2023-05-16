@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../../styles/table.css";
-import listIcon from "../../icons/list_view.svg";
-import pdfshowIcon from "../../icons/preview_view.svg";
-import searchIcon from "../../icons/search.svg";
-import tilesIcon from "../../icons/tiles_view.svg";
-function Table() {
+function Table({ data }) {
   const checkboxesRef = useRef([]);
   const [showTable, setShowTable] = useState(true);
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
@@ -98,7 +94,7 @@ function Table() {
                 </tr>
               </thead>
               <tbody>
-                {products.slice(0, 5).map((product, index) => (
+              {data.slice(0, 5).map((product, index) => (
                   <tr key={product.id}>
                     <td className="th-img" scope="row">
                       <img

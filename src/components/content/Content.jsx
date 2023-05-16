@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/container.css";
-import shapeIcon from "../../icons/imaginary_brand.svg";
 import settingsIcon from "../../icons/settings.svg";
 import logoutIcon from "../../icons/logout.svg";
 import HeaderDropdown from "../headerDropdown/HeaderDropdown";

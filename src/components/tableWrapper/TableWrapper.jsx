@@ -119,10 +119,10 @@ const handleIconClick = (mode) => {
       {viewMode === "pdf" && (
         <div className="pdf-container">
           <div className="half-width-table">
-            <Table />
+            <Table data={products}  />
           </div>
           <div className="pdf-item">
-            <PdfItem data={products} />
+            <PdfItem  data={products} />
           </div>
         </div>
       )}

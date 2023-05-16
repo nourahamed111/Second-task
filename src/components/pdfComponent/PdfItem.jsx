@@ -1,9 +1,9 @@
 import React from "react";
 import "../../styles/pdfItem.css";
-const PdfItem = () => {
+const PdfItem = ({ data }) => {
   return (
     <div className="pdfContainer">
-        hello
+        <p>{data.title.slice(0, 20)}</p>
     </div>
   );
 };
