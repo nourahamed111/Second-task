@@ -1,7 +1,26 @@
+.pdf-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tableContainerForPdf {
+  margin-right: 10px;
+  width: 70%;
+}
+
+.pdfContainer {
+  width: 28%;
+  background-color: #efefef;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  margin-left: 4rem;
+}
+
+
+
 .dropdownContainer {
   position: relative;
 }
-
 .dropdownArrow {
   cursor: pointer;
 }

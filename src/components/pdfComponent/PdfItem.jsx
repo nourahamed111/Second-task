@@ -3,7 +3,7 @@ import "../../styles/pdfItem.css";
 const PdfItem = ({ data }) => {
   return (
     <div className="pdfContainer">
-        <p>{data.title.slice(0, 20)}</p>
+        <p>Click Here</p>
     </div>
   );
 };

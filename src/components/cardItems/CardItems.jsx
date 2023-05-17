@@ -1,7 +1,10 @@
 import React from "react";
 import "../../styles/cardItem.css";
 
-const CardItems = ({ data }) => {
+const CardItems = ({ data ,checkboxesRef }) => {
+  const handleCheckboxChange = (index, checked) => {
+    checkboxesRef.current[index].checked = checked;
+  };
   return (
     <div className="cardContainer">
       {data.slice(0, 5).map((product, index) => (
@@ -10,7 +13,8 @@ const CardItems = ({ data }) => {
             <input
               className="download-checkbox"
               type="checkbox"
-              defaultChecked={false}
+              ref={(ref) => (checkboxesRef.current[index] = ref)}
+              onChange={(e) => handleCheckboxChange(index, e.target.checked)}
             />
             <img
               className="card-img-top"

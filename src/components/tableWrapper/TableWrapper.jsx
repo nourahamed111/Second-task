@@ -14,6 +14,7 @@ const TableWrapper = () => {
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
+  const [flexDivWidth, setFlexDivWidth] = useState("100%")
   //fetching the data 
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -25,12 +26,13 @@ const TableWrapper = () => {
     fetchProducts();
   }, []);
   //select all function
-  const handleSelectAll=()=> {
+  const handleSelectAll = () => {
     setSelectAll(!selectAll);
     checkboxesRef.current.forEach((checkbox) => {
       checkbox.checked = !selectAll;
     });
-  }
+  };
+
   //dropdown menu
   const handleSortClick=()=> {
     setSortDirectionDropdown(sortDirectionDropdown === "down" ? "up" : "down");
@@ -41,10 +43,15 @@ const TableWrapper = () => {
 //show the pdf and cards
 const handleIconClick = (mode) => {
   setViewMode(mode);
+  if (mode === "pdf") {
+    setFlexDivWidth("65%");
+  } else {
+    setFlexDivWidth("100%");
+  }
 };
   return (
     <div className="table-container">
-      <div className="d-flex wrap-div">
+      <div className="d-flex wrap-div" style={{ width: flexDivWidth }}>
         <div className="p-2 flex-grow-1 table-wrapper">
           <div className="options d-flex justify-content-start">
           <img
@@ -72,7 +79,7 @@ const handleIconClick = (mode) => {
             </div>
             <div className="dropdownContainer">
               <button className="sort-btn hide" onClick={handleSortClick}>
-                sort by: published descending
+                sort by:Published descending
                 <img
                   className="dropdownArrow"
                   src="https://img.icons8.com/material-rounded/24/8D55C8/expand-arrow--v1.png"
@@ -105,8 +112,8 @@ const handleIconClick = (mode) => {
               <input
                 className="inputSelect"
                 type="checkbox"
-                defaultChecked={selectAll}
                 onClick={handleSelectAll}
+                defaultChecked={selectAll}
               />
             </button>
           </div>
@@ -115,18 +122,14 @@ const handleIconClick = (mode) => {
           </div>
         </div>
       </div>
-      {viewMode === "table" && <Table data={products} />}
+      {viewMode === "table" && <Table data={products}  checkboxesRef={checkboxesRef} />}
       {viewMode === "pdf" && (
         <div className="pdf-container">
-          <div className="half-width-table">
-            <Table data={products}  />
+          <div className="tableContainerForPdf"><Table data={products}  checkboxesRef={checkboxesRef} /></div>
+            <div className="pdfContainer"><PdfItem  data={products}  checkboxesRef={checkboxesRef} /></div>
           </div>
-          <div className="pdf-item">
-            <PdfItem  data={products} />
-          </div>
-        </div>
       )}
-      {viewMode === "cards" && <CardItems data={products} />}
+      {viewMode === "cards" && <CardItems data={products}   checkboxesRef={checkboxesRef}/>}
     </div>
   );
 };
