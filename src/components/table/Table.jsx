@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../styles/table.css";
 
 function Table({ data, checkboxesRef }) {
   const [sortDirection, setSortDirection] = useState("asc");
+  const [sortColumn, setSortColumn] = useState(null);
 
   const handleCheckboxChange = (index, checked) => {
     checkboxesRef.current[index].checked = checked;
@@ -13,7 +14,36 @@ function Table({ data, checkboxesRef }) {
       prevDirection === "asc" ? "desc" : "asc"
     );
   };
-
+  const handleSort = (column) => {
+    if (sortColumn === column) {
+      handleSortDirectionToggle();
+    } else {
+      setSortColumn(column);
+      setSortDirection("asc");
+    }
+  };
+  const sortedData = getSortedData();
+  function getSortedData() {
+    const sortedData = [...data];
+    if (sortColumn === "name") {
+      sortedData.sort((a, b) =>
+        sortDirection === "asc"
+          ? a.title.localeCompare(b.title)
+          : b.title.localeCompare(a.title)
+      );
+    } else if (sortColumn === "price") {
+      sortedData.sort((a, b) =>
+        sortDirection === "asc" ? a.price - b.price : b.price - a.price
+      );
+    } else if (sortColumn === "rate") {
+      sortedData.sort((a, b) =>
+        sortDirection === "asc"
+          ? a.rating.rate - b.rating.rate
+          : b.rating.rate - a.rating.rate
+      );
+    }
+    return sortedData;
+  }
   return (
     <>
       <div className="table-container">
@@ -23,24 +53,47 @@ function Table({ data, checkboxesRef }) {
               <th className="hide th-img" scope="col">
                 Type
               </th>
-              <th className="hide table-th" scope="col">
+              <th
+                className="hide table-th nameTh"
+                scope="col"
+                onClick={() => handleSort("name")}
+              >
                 Name
               </th>
-              <th className="published hide" scope="col">
+              <th
+                className="published hide"
+                scope="col"
+                onClick={() => handleSort("price")}
+              >
                 Price
-                {sortDirection === "asc" ? (
+                {sortDirection === "asc" && sortColumn === "price" ? (
                   <img
                     className="img"
                     src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
+                    alt="Sort Ascending"
+                    onClick={() => handleSort("price")}
+                  />
+                ) : sortDirection === "desc" && sortColumn === "price" ? (
+                  <img
+                    className="img"
+                    src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
+                    alt="Sort Descending"
+                    onClick={() => handleSort("price")}
                   />
                 ) : (
                   <img
                     className="img"
-                    src="https://img.icons8.com/metro/26/C850F2/long-arrow-down.png"
+                    src="https://img.icons8.com/metro/26/C850F2/long-arrow-up.png"
+                    alt="Sort Ascending"
+                    onClick={() => handleSort("price")}
                   />
                 )}
               </th>
-              <th className="hide download" scope="col">
+              <th
+                className="hide download"
+                scope="col"
+                onClick={() => handleSort("rate")}
+              >
                 Product Rate
               </th>
               <th className="hide" scope="col">
@@ -54,7 +107,7 @@ function Table({ data, checkboxesRef }) {
             </tr>
           </thead>
           <tbody>
-            {data.slice(0,5).map((product, index) => (
+            {sortedData.slice(0, 5).map((product, index) => (
               <tr key={product.id}>
                 <td className="th-img" scope="row">
                   <img
@@ -71,7 +124,9 @@ function Table({ data, checkboxesRef }) {
                     className="download-checkbox"
                     type="checkbox"
                     ref={(ref) => (checkboxesRef.current[index] = ref)}
-                    onChange={(e) => handleCheckboxChange(index, e.target.checked)}
+                    onChange={(e) =>
+                      handleCheckboxChange(index, e.target.checked)
+                    }
                   />
                 </td>
               </tr>

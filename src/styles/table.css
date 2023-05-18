@@ -1,11 +1,12 @@
 .pdf-container {
   display: flex;
   align-items: flex-start;
+  width: 100%;
 }
 
 .tableContainerForPdf {
   margin-right: 10px;
-  width: 70%;
+  width: 125% !important;
 }
 
 .pdfContainer {
@@ -73,6 +74,7 @@ table {
 }
 .options {
   width: 50%;
+  margin-bottom: 1rem;
 }
 .sort-icons {
   width: 4%;
@@ -102,7 +104,7 @@ table {
 }
 .search input {
   font-weight: 100;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   height: 1.4rem;
   background-color: #efefef;
   border: none;
@@ -127,7 +129,7 @@ table {
   background-color: #fff;
   width: 100%;
   font-weight: 100;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   height: 1.4rem;
   margin-left: 0.2rem;
   white-space: nowrap;
@@ -162,6 +164,7 @@ table {
   height: 1.5rem;
 }
 .inputSelect {
+  cursor: pointer;
   margin-left: 0.2rem;
   color: #8d55c8;
   background-color: #fff;
@@ -171,14 +174,19 @@ table {
   text-align: left;
 }
 td {
-  font-size: 0.73rem;
+  font-size: 0.5rem;
   font-weight: 100;
   text-align: center;
+}
+.th-img img {
+  width: 18px;}
+.nameTh{
+  text-align: left;
 }
 th {
   font-size: 0.8rem;
   font-weight: 100;
-  text-align: left;
+  text-align: center;
 }
 th img {
   width: 80%;
@@ -189,7 +197,7 @@ th img {
   padding-left: 0.2rem;
 }
 .published .img {
-  width: 12%;
+  width: 10px;
   margin-right: 0.5rem;
 }
 @media (max-width: 430px) {
@@ -199,31 +207,8 @@ th img {
     border-radius: 10px;
   }
 
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 100%;
-    cursor: pointer;
-  }
-  .th-img img {
-    width: 32% !important;
-  }
-  .th-img {
-    padding-right: 1rem !important;
-    width: 20% !important;
-    padding-top: 0.5rem !important;
-  }
-
   .wrap-div {
     flex-wrap: wrap;
-  }
-  th img {
-    width: 15%;
-    text-align: left;
-  }
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 70%;
-    cursor: pointer;
   }
   .hide {
     display: none;
@@ -276,32 +261,8 @@ th img {
     background-color: #fff;
     border-radius: 10px;
   }
-
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 100%;
-    cursor: pointer;
-  }
-  .th-img img {
-    width: 50% !important;
-  }
-  .th-img {
-    padding-right: 1rem !important;
-    width: 20% !important;
-    padding-top: 0.5rem !important;
-  }
-
   .wrap-div {
     flex-wrap: wrap;
-  }
-  th img {
-    width: 15%;
-    text-align: left;
-  }
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 70%;
-    cursor: pointer;
   }
   .hide {
     display: none;
@@ -358,24 +319,7 @@ th img {
   }
 }
 @media (max-width: 282px) {
-  th .img {
-    width: 100%;
-    padding: 0%;
-    text-align: left;
-  }
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 100%;
-    cursor: pointer;
-  }
-  .th-img img {
-    width: 21% !important;
-  }
-  .th-img {
-    padding: 0% !important;
-    width: 29% !important;
-    padding-top: -0.6rem !important;
-  }
+
   .wrap-div {
     margin-right: -2rem;
   }
@@ -426,17 +370,7 @@ th img {
     margin-right: 0.2rem;
   }
   .published .img {
-    width: 11%;
     margin-right: 0.8rem;
-  }
-  .th-img img {
-    width: 75%;
-    padding-bottom: 0.1rem;
-  }
-  .th-img {
-    width: 0%;
-    padding-left: 0.5rem;
-    padding-right: 0.8rem;
   }
   .sort-icons {
     width: 8%;
@@ -457,15 +391,7 @@ th img {
   .imagePdfShow {
     display: flex;
   }
-  .pdf-img-title {
-    color: #8d55c8;
-    font-size: 0.8rem;
-    margin: 1rem;
-  }
-  .pdf-img {
-    width: 20%;
-    margin: 0.1rem;
-  }
+
   .table-container {
     width: 100%;
   }
@@ -483,17 +409,14 @@ th img {
     width: 50%;
   }
   .sort-icons {
-    width: 5%;
+    width: 20px;
   }
-  .th-img img {
-    width: 92%;
-    padding-bottom: 0.1rem;
-  }
+
   td {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   th {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .download button {
@@ -503,18 +426,18 @@ th img {
     font-size: 1rem;
   }
   .sort-btn {
-    font-size: 1rem;
+    font-size: 0.8rem;
     height: 1.6rem;
   }
   .search input {
-    font-size: 1rem;
+    font-size: 0.8rem;
     height: 1.6rem;
   }
   .header-text p {
     font-size: 1rem;
   }
   .header-text h1 {
-    font-size: 1.9rem;
+    font-size: 1rem;
   }
   .user-btns {
     font-size: 1rem;

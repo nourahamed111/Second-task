@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Table from "../table/Table";
 import PdfItem from "../pdfComponent/PdfItem";
-import CardItems from "../cardItems/CardItems"
+import CardItems from "../cardItems/CardItems";
 import "../../styles/table.css";
 import listIcon from "../../icons/list_view.svg";
 import pdfshowIcon from "../../icons/preview_view.svg";
@@ -14,18 +14,22 @@ const TableWrapper = () => {
   const [sortDirectionDropdown, setSortDirectionDropdown] = useState("down");
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
-  const [flexDivWidth, setFlexDivWidth] = useState("100%")
-  //fetching the data 
-  const [products, setProducts] = useState([]);
+  const [flexDivWidth, setFlexDivWidth] = useState("100%");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [product, setProduct] = useState();
+  // Fetching the data
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      setProducts(data);
+      setFilteredProducts(data);
+      setProduct(data);
     }
     fetchProducts();
   }, []);
-  //select all function
+
+  // Select all function
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
     checkboxesRef.current.forEach((checkbox) => {
@@ -33,22 +37,44 @@ const TableWrapper = () => {
     });
   };
 
-  //dropdown menu
-  const handleSortClick=()=> {
+  // Dropdown menu
+  const handleSortClick = () => {
     setSortDirectionDropdown(sortDirectionDropdown === "down" ? "up" : "down");
-  }
-  const handleDropdownClick=()=> {
+  };
+
+  const handleDropdownClick = () => {
     setShowDropdown(!showDropdown);
-  }
-//show the pdf and cards
-const handleIconClick = (mode) => {
-  setViewMode(mode);
-  if (mode === "pdf") {
-    setFlexDivWidth("65%");
+  };
+
+  // Show the pdf and cards
+  const handleIconClick = (mode) => {
+    setViewMode(mode);
+    if (mode === "pdf") {
+      setFlexDivWidth("65%");
+    } else {
+      setFlexDivWidth("100%");
+    }
+  };
+
+  // Handle search input change
+  const handleSearchInputChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    filterProducts(query);
+  };
+
+  // Filter products based on search query
+const filterProducts = (query) => {
+  if (query === "") {
+    setFilteredProducts(product); // Return original products
   } else {
-    setFlexDivWidth("100%");
+    const filtered = filteredProducts.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered);
   }
 };
+
   return (
     <div className="table-container">
       <div className="d-flex wrap-div" style={{ width: flexDivWidth }}>
@@ -74,7 +100,8 @@ const handleIconClick = (mode) => {
               onClick={() => handleIconClick("cards")}
             />
             <div className="search">
-              <input placeholder="search"></input>
+              <input placeholder="search"  value={searchQuery}
+            onChange={handleSearchInputChange}></input>
               <img className="search-icon" src={searchIcon} />
             </div>
             <div className="dropdownContainer">
@@ -122,14 +149,14 @@ const handleIconClick = (mode) => {
           </div>
         </div>
       </div>
-      {viewMode === "table" && <Table data={products}  checkboxesRef={checkboxesRef} />}
+      {viewMode === "table" && <Table data={filteredProducts}  checkboxesRef={checkboxesRef} />}
       {viewMode === "pdf" && (
         <div className="pdf-container">
-          <div className="tableContainerForPdf"><Table data={products}  checkboxesRef={checkboxesRef} /></div>
-            <div className="pdfContainer"><PdfItem  data={products}  checkboxesRef={checkboxesRef} /></div>
+          <div className="tableContainerForPdf"><Table data={filteredProducts}checkboxesRef={checkboxesRef} /></div>
+            <div className="pdfContainer"><PdfItem  data={filteredProducts}  checkboxesRef={checkboxesRef} /></div>
           </div>
       )}
-      {viewMode === "cards" && <CardItems data={products}   checkboxesRef={checkboxesRef}/>}
+      {viewMode === "cards" && <CardItems data={filteredProducts}   checkboxesRef={checkboxesRef}/>}
     </div>
   );
 };

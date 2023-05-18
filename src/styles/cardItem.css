@@ -1,3 +1,9 @@
+*{
+    font-size: 0.8rem;
+}
+p {
+    text-align: center;
+}
 .card{
     width: 8rem;
     margin: 1rem;
@@ -7,8 +13,10 @@
 .cardContainer{
     display:flex;
     justify-content: start;
+    flex-wrap: wrap;
 }
 .card-img-top{
     max-height: 90px;
     padding: 1rem;
+    
 }

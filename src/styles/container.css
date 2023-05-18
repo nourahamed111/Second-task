@@ -26,12 +26,12 @@
 }
 .user-btns img {
   margin-right: 0.3rem;
-  width: 15%;
+  width: 13px;
   cursor: pointer;
 }
 .header-text h1 {
   font-weight: 200;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .header-text p {
   font-weight: 100;
@@ -39,7 +39,7 @@
 }
 @media (max-width: 430px) {
   .header-text h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .header-text {
     margin-top: 1rem;
@@ -50,16 +50,11 @@
   }
   .user-btn-name {
     display: none;
-  }
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 100%;
-    cursor: pointer;
   }
 }
 @media (max-width: 550px) {
   .header-text h1 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .header-text {
     margin-top: 1rem;
@@ -71,19 +66,9 @@
   .user-btn-name {
     display: none;
   }
-  .user-btns img {
-    margin-right: 0.7rem;
-    width: 100%;
-    cursor: pointer;
-  }
 }
 
 @media (max-width: 800px) {
-  .user-btns img {
-    margin-right: 0.2rem;
-    width: 20%;
-    cursor: pointer;
-  }
   .user-btns {
     width: 11%;
     height: 1.5rem;
