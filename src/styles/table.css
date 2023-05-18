@@ -1,7 +1,79 @@
+
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  border: 1px solid #8D55C8;
+  height: 12px;
+  width: 12px;
+  background-color: white;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 3px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: solid #8D55C8;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
 .pdf-container {
   display: flex;
   align-items: flex-start;
   width: 100%;
+}
+
+.header-text p {
+  text-align: left;
 }
 
 .tableContainerForPdf {
@@ -77,14 +149,18 @@ table {
   margin-bottom: 1rem;
 }
 .sort-icons {
-  width: 4%;
+  width: 17px;
   padding: 0.2rem;
   margin-right: 0.2rem;
 }
-.sort-icons:hover {
+
+.sort-icons:hover,
+.sort-icons:focus,
+.sort-icons:active {
   background-color: #efefef;
   border-radius: 3px;
 }
+
 .last-icon {
   margin-right: 1rem;
 }
@@ -179,7 +255,7 @@ td {
   text-align: center;
 }
 .th-img img {
-  width: 18px;}
+  width: 15px;}
 .nameTh{
   text-align: left;
 }
@@ -212,10 +288,6 @@ th img {
   }
   .hide {
     display: none;
-  }
-  .sort-icons {
-    width: 15%;
-    margin-right: 0.2rem;
   }
   .search input {
     margin-left: 2.5rem;
@@ -266,10 +338,6 @@ th img {
   }
   .hide {
     display: none;
-  }
-  .sort-icons {
-    width: 15%;
-    margin-right: 0.2rem;
   }
   .search input {
     padding-left: 0rem;
@@ -349,9 +417,7 @@ th img {
     left: 232%;
     top: 32%;
   }
-  .sort-icons {
-    padding: 0rem;
-  }
+
   .dropdown-btn {
     width: 71% !important;
   }
@@ -371,9 +437,6 @@ th img {
   }
   .published .img {
     margin-right: 0.8rem;
-  }
-  .sort-icons {
-    width: 8%;
   }
 }
 
@@ -408,9 +471,6 @@ th img {
     display: block;
     width: 50%;
   }
-  .sort-icons {
-    width: 20px;
-  }
 
   td {
     font-size: 0.8rem;
@@ -434,10 +494,7 @@ th img {
     height: 1.6rem;
   }
   .header-text p {
-    font-size: 1rem;
-  }
-  .header-text h1 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   .user-btns {
     font-size: 1rem;

@@ -14,13 +14,12 @@
     background-color: #fff;
     box-shadow: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0rem;
-    width: 60%;
+    width: 48%;
     text-align: center;
-    height: 1.7rem;
-  }
-
+    height: 2rem;
+}
   .dropdown-btn:hover {
     background-color: #fff;
   }

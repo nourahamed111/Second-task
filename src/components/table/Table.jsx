@@ -24,7 +24,7 @@ function Table({ data, checkboxesRef }) {
   };
   const sortedData = getSortedData();
   function getSortedData() {
-    const sortedData = [...data];
+    const sortedData = data;
     if (sortColumn === "name") {
       sortedData.sort((a, b) =>
         sortDirection === "asc"
@@ -120,14 +120,18 @@ function Table({ data, checkboxesRef }) {
                 <td className="hide">{product.price}</td>
                 <td className="hide">{product.rating.rate}</td>
                 <td className="inputTd">
+                  <label class="container">
                   <input
-                    className="download-checkbox"
-                    type="checkbox"
+                  type="checkbox"
+                    className="download-checkbox "
                     ref={(ref) => (checkboxesRef.current[index] = ref)}
                     onChange={(e) =>
                       handleCheckboxChange(index, e.target.checked)
                     }
                   />
+                  <span class="checkmark"></span>
+                  </label>
+                 
                 </td>
               </tr>
             ))}

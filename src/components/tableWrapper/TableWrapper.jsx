@@ -69,7 +69,7 @@ const filterProducts = (query) => {
     setFilteredProducts(product); // Return original products
   } else {
     const filtered = filteredProducts.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
+      product.title.trim().toLowerCase().includes(query.trim().toLowerCase())
     );
     setFilteredProducts(filtered);
   }
@@ -101,7 +101,7 @@ const filterProducts = (query) => {
             />
             <div className="search">
               <input placeholder="search"  value={searchQuery}
-            onChange={handleSearchInputChange}></input>
+            onChange={handleSearchInputChange} />
               <img className="search-icon" src={searchIcon} />
             </div>
             <div className="dropdownContainer">
